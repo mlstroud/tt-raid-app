@@ -8,6 +8,49 @@
     <title>Tap Titans 2 - Raid Analysis Tool</title>
   </head>
   <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Tap Titans 2 Raid Analysis Tool</h1>
+      </div>
 
+      <div class="row" id="results">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title">Results</h2>
+            </div>
+            <div class="panel-body">
+              <div id="test">
+                <table id="result-table">
+                  <tr>
+                    <th><a href="#" id="sort-player">Player</a></th>
+                    <th><a href="#" id="sort-total">Total Damage</a></th>
+                    <th><a href="#" id="sort-average">Average Damage</a></th>
+                    <th>Total Attacks</th>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h2 class="panel-title">Clan Raid Log</h2>
+            </div>
+            <div class="panel-body" id="p-raid-log">
+              <form id="form-raid">
+                <textarea id="raid-input" name="raid-log" placeholder="Copy/paste your raid log here."></textarea>
+                <button class="btn btn-warning">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </body>
 </html>

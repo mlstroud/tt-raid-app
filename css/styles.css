@@ -1,0 +1,22 @@
+.jumbotron {
+  text-align: center;
+}
+
+#raid-input {
+  width: 100%;
+  height: 300px;
+  resize: none;
+}
+
+#p-raid-log {
+  text-align: center;
+}
+
+#results {
+  display: none;
+}
+
+#result-table {
+  width: 100%;
+  text-align: left;
+}
