@@ -11,6 +11,14 @@ function Player(raidAttack) {
   this.totalRaidAttacks = raidAttack.totalRaidAttacks;
   this.totalDamage = 0;
   this.averageDamage = 0;
+  this.head = [0, 0, 0];
+  this.leftArm = [0, 0, 0];
+  this.rightArm = [0, 0, 0];
+  this.leftHand = [0, 0, 0];
+  this.rightHand = [0, 0, 0];
+  this.Torso = [0, 0, 0];
+  this.leftLeg = [0, 0, 0];
+  this.RightLeg = [0, 0, 0];
 };
 
 Player.prototype.updateDamage = function(raidAttack) {
@@ -71,11 +79,6 @@ function readRaidLog() {
 };
 
 function updatePlayer(raidAttack) {
-
-  //$("#test").append(raidAttack.playerName + " "  + raidAttack.playerCode +  "<br>");
-
-  // Check if player code already exists in players.
-  // If it does, update that player, if not then create new player and add to list.
   
   if (players.length === 0) {
 
@@ -126,7 +129,6 @@ function getPlayers(playerCode) {
 };
 
 // USER INTERFACE --------------------------------------------------------------------------------
-
 $(document).ready(function () {
 
   var resultsHidden = true;
@@ -174,10 +176,29 @@ $(document).ready(function () {
     var modalLink = $(event.relatedTarget);
     modalPlayerCode = $(modalLink).attr("name");
 
+    for (let i = 0; i < players.length; i++) {
+      if(players[i].playerCode === modalPlayerCode) {
+        var player = players[i];
+        break;
+      }
+    }
+
+    var playerDamage = {
+      head : 0,
+      leftArm :0,
+      rightArm :0,
+    };
+
     $("#modal-text").append(
       "<tr>" +
-        "<td>" + modalPlayerCode + "</td>" +
-        "<td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+        "<td>" + player.playerCode + "</td>" +
+        "<td></td>" +
+        "<td></td>" +
+        "<td></td>" +
+        "<td></td>" +
+        "<td></td>" +
+        "<td></td>" +
+        "<td></td>" +
       "</tr>");
   });
 });
