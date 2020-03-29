@@ -20,6 +20,7 @@ _Highly detailed analysis of player performance.__
 * View at https://mlstroud.github.io/tt-raid-app
 
 ## How to Use
+* Sample raid log is provided: sample_raid_log.txt
 * Copy/paste raid log into textarea and press submit.
 * Click player names to view detailed player report.
 
