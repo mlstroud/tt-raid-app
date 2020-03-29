@@ -19,6 +19,10 @@ _Highly detailed analysis of player performance.__
 
 * View at https://mlstroud.github.io/tt-raid-app
 
+## How to Use
+* Copy/paste raid log into textarea and press submit.
+* Click player names to view detailed player report.
+
 ### License
 
 This software is licensed under the MIT license.
