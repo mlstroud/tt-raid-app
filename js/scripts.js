@@ -210,6 +210,7 @@ $(document).ready(function () {
   $("#form-raid").submit(function (event) {
     
     readRaidLog();
+    $("#result-table tr:gt(0)").remove();
 
     for(let i = 0; i < players.length; i++) {
       $("#result-table").append(
@@ -260,7 +261,7 @@ $(document).ready(function () {
     for (let i = 0; i < player.titan.length; i++) {
       $("#modal-text").append(
         "<div class=\"panel panel-default player-detail-panel\">" +
-          "<div class=\"panel-heading\">" +
+          "<div class=\"panel-heading panel-titan-info\">" +
             "<h2 class=\"panel-title\">" + player.titan[i].titanName + " - Total Damage: " + player.titan[i].titanDamage + "</h2>" +
           "</div>" +
           "<div class=\"panel-body\">" +

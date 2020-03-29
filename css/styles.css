@@ -1,5 +1,12 @@
+body {
+  background-color: #36393D;
+}
+
 .jumbotron {
+  background-color: #36393D;
   text-align: center;
+  color: #FF851B;
+  text-shadow: 2px 2px 1px #212529;
 }
 
 #raid-input {
@@ -28,12 +35,35 @@ tr:hover {
   background-color: skyblue;
 }
 
+.panel {
+  background-color: #EEEEEE;
+  box-shadow: 5px 5px 10px #212529;
+}
+
+.panel-heading {
+  background-color: orange !important;
+}
+
+.panel-title {
+  font-weight: bold;
+  color: black;
+}
+
 #modal-text {
   display: none;
 }
 
 .modal-lg {
   max-width: 80%;
+}
+
+.modal-header {
+  text-align: center;
+  background-color: orange;
+}
+
+.modal-body {
+  background-color: ORAN;
 }
 
 .modal-footer {
