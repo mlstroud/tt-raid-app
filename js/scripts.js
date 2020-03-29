@@ -3,59 +3,63 @@ var players = [];
 var raidAttack;
 var modalPlayerCode;
 
+function Titan(raidAttack) {
+    this.titanNumber = raidAttack.titanNumber,
+    this.titanName = raidAttack.titanName,
+    this.titanDamage = raidAttack.titanDamage,
+    this.head = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.leftArm = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.rightArm = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.leftHand = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.rightHand = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.torso = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.leftLeg = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    this.rightLeg = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    }
+};
+
 function Player(raidAttack) {
   this.playerName = raidAttack.playerName;
-  this.playerCode = raidAttack.playerCode
+  this.playerCode = raidAttack.playerCode;
   this.raidAttacks = [];
   this.raidAttacks.push(raidAttack);
   this.totalRaidAttacks = raidAttack.totalRaidAttacks;
   this.totalDamage = 0;
   this.averageDamage = 0;
-  this.titan = {
-    titanNumber : raidAttack.titanNumber,
-    titanName : raidAttack.titanName,
-    titanDamage : raidAttack.titanDamage,
-    head = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    leftArm = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    rightArm = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    leftHand = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    rightHand = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    torso = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    leftLeg = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    },
-    rightLeg = {
-      armor : 0,
-      body : 0,
-      skeleton : 0
-    }
-  };
+  this.titan = new Array();
+  //var tempTitan = new Titan(raidAttack);
+  //this.titan.push(tempTitan);
 };
 
 Player.prototype.updateDamage = function(raidAttack) {
@@ -68,37 +72,41 @@ Player.prototype.updateDamage = function(raidAttack) {
 
   this.averageDamage = Math.round(this.totalDamage / this.totalRaidAttacks);
 
-  this.titan.head.armor = raidAttack.armorHead;
-  this.titan.head.body = raidAttack.bodyHead;
-  this.titan.head.skeleton = raidAttack.skeletonHead;
+  var tempTitan = new Titan(raidAttack);
 
-  this.titan.leftArm.armor = raidAttack.armorLeftArm;
-  this.titan.leftArm.body = raidAttack.bodyLeftArm;
-  this.titan.leftArm.skeleton = raidAttack.skeletonLeftArm;
+  tempTitan.head.armor += raidAttack.armorHead;
+  tempTitan.head.body += raidAttack.bodyHead;
+  tempTitan.head.skeleton += raidAttack.skeletonHead;
 
-  this.titan.rightArm.armor = raidAttack.armorRightArm;
-  this.titan.rightArm.body = raidAttack.bodyRightArm;
-  this.titan.rightArm.skeleton = raidAttack.skeletonRightArm;
+  tempTitan.leftArm.armor += raidAttack.armorLeftArm;
+  tempTitan.leftArm.body += raidAttack.bodyLeftArm;
+  tempTitan.leftArm.skeleton += raidAttack.skeletonLeftArm;
 
-  this.titan.leftHand.armor = raidAttack.armorLeftHand;
-  this.titan.leftHand.body = raidAttack.bodyLeftHand;
-  this.titan.leftHand.skeleton = raidAttack.skeletonLeftHand;
+  tempTitan.rightArm.armor += raidAttack.armorRightArm;
+  tempTitan.rightArm.body += raidAttack.bodyRightArm;
+  tempTitan.rightArm.skeleton += raidAttack.skeletonRightArm;
 
-  this.titan.rightHand.armor = raidAttack.armorRightHand;
-  this.titan.rightHand.body = raidAttack.bodyRightHand;
-  this.titan.rightHand.skeleton = raidAttack.skeletonRightHand;
+  tempTitan.leftHand.armor += raidAttack.armorLeftHand;
+  tempTitan.leftHand.body += raidAttack.bodyLeftHand;
+  tempTitan.leftHand.skeleton += raidAttack.skeletonLeftHand;
 
-  this.titan.torso.armor = raidAttack.armorTorso;
-  this.titan.torso.body = raidAttack.bodyTorso;
-  this.titan.torso.skeleton = raidAttack.skeletonTorso;
+  tempTitan.rightHand.armor += raidAttack.armorRightHand;
+  tempTitan.rightHand.body += raidAttack.bodyRightHand;
+  tempTitan.rightHand.skeleton += raidAttack.skeletonRightHand;
 
-  this.titan.leftLeg.armor = raidAttack.armorLeftLeg;
-  this.titan.leftLeg.body = raidAttack.bodyLeftLeg;
-  this.titan.leftLeg.skeleton = raidAttack.skeletonLeftLeg;
+  tempTitan.torso.armor += raidAttack.armorTorso;
+  tempTitan.torso.body += raidAttack.bodyTorso;
+  tempTitan.torso.skeleton += raidAttack.skeletonTorso;
 
-  this.titan.rightLeg.armor = raidAttack.armorRightLeg;
-  this.titan.rightLeg.body = raidAttack.bodyRightLeg;
-  this.titan.rightLeg.skeleton = raidAttack.skeletonRightLeg;
+  tempTitan.leftLeg.armor += raidAttack.armorLeftLeg;
+  tempTitan.leftLeg.body += raidAttack.bodyLeftLeg;
+  tempTitan.leftLeg.skeleton += raidAttack.skeletonLeftLeg;
+
+  tempTitan.rightLeg.armor += raidAttack.armorRightLeg;
+  tempTitan.rightLeg.body += raidAttack.bodyRightLeg;
+  tempTitan.rightLeg.skeleton += raidAttack.skeletonRightLeg;
+
+  this.titan.push(tempTitan);
 };
 
 function readRaidLog() {
@@ -168,7 +176,6 @@ function updatePlayer(raidAttack) {
     }
 
     if(found === false) {
-
       var player = new Player(raidAttack);
       player.updateDamage(raidAttack);
       players.push(player);
@@ -210,7 +217,7 @@ $(document).ready(function () {
       $("#result-table").append(
         "<tr>" +
           "<td><a href=\"#\" data-toggle=\"modal\" data-target=\"#player-modal\" class=\"player-link\" name=\"" + 
-            players[i].playerCode + "\" onclick=\"storeCode\">" + players[i].playerName + "</a></td>" +
+            players[i].playerCode + "\">" + players[i].playerName + "</a></td>" +
           "<td>" + players[i].totalDamage + "</td>" +
           "<td>" + players[i].averageDamage + "</td>" +
           "<td>" + players[i].totalRaidAttacks + "</td>" +
@@ -252,12 +259,7 @@ $(document).ready(function () {
       }
     }
 
-    var playerDamage = {
-      head : 0,
-      leftArm :0,
-      rightArm :0,
-    };
-
+    console.log(player.titan.length);
     $("#modal-text").append(
       "<tr>" +
         "<td>" + player.playerCode + "</td>" +
