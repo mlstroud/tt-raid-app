@@ -6,8 +6,8 @@
 ## Description
 
 _This is an app created for the mobile game Tap Titans 2._  
-_Users can paste the raid log from the game into the text area to get__  
-_Highly detailed analysis of player performance.__
+_Users can paste the raid log from the game into the text area to get_  
+_Highly detailed analysis of player performance._  
 
 ## Setup/Installation Requirements
 
