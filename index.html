@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="./css/bootstrap.css" type="text/css">
     <link rel="stylesheet" href="./css/styles.css" type="text/css">
     <script src="./js/jquery-3.4.1.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
     <script src="./js/scripts.js"></script>
     <title>Tap Titans 2 - Raid Analysis Tool</title>
   </head>
@@ -48,6 +53,40 @@
               </form>
             </div>
           </div>
+        </div>
+      </div>
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="player-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Player Attack Details</h4>
+            </div>
+            <div class="modal-body">
+              <table id="modal-text">
+              <tr id="modal-text-header">
+                <th>Head</th>
+                <th>Left Arm</th>
+                <th>Right Arm</th>
+                <th>Left Hand</th>
+                <th>Right Hand</th>
+                <th>Torso</th>
+                <th>Left Leg</th>
+                <th>Right Leg</th>
+              </tr>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
         </div>
       </div>
 

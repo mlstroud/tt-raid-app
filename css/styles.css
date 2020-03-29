@@ -16,7 +16,18 @@
   display: none;
 }
 
-#result-table {
+table {
   width: 100%;
   text-align: left;
+}
+
+td {
+ padding-bottom: 2px;
+}
+tr:hover {
+  background-color: skyblue;
+}
+
+#modal-text {
+  display: none;
 }

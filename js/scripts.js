@@ -1,6 +1,7 @@
 // BUSINESS LOGIC --------------------------------------------------------------------------------
 var players = [];
 var raidAttack;
+var modalPlayerCode;
 
 function Player(raidAttack) {
   this.playerName = raidAttack.playerName;
@@ -103,21 +104,32 @@ function updatePlayer(raidAttack) {
   } 
 };
 
-function getPlayers() {
+function getPlayers(playerCode) {
   var playerList = [];
 
-  for(let i = 0; i < players.length; i++) {
-    playerList.push(players[i].playerName);
-  }
+  if(playerCode === "all") {
 
-  return playerList;
+    for(let i = 0; i < players.length; i++) {
+      playerList.push(players[i].playerName);
+    }
+  
+    return playerList;
+  }
+  else {
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].playerCode === playerCode){
+        return player[i];
+      }
+    }
+    return null;
+  }
 };
 
 // USER INTERFACE --------------------------------------------------------------------------------
 
 $(document).ready(function () {
 
-  var resultsHidden = true
+  var resultsHidden = true;
 
   $("#form-raid").submit(function (event) {
     
@@ -126,7 +138,8 @@ $(document).ready(function () {
     for(let i = 0; i < players.length; i++) {
       $("#result-table").append(
         "<tr>" +
-          "<td>" + players[i].playerName + "</td>" +
+          "<td><a href=\"#\" data-toggle=\"modal\" data-target=\"#player-modal\" class=\"player-link\" name=\"" + 
+            players[i].playerCode + "\" onclick=\"storeCode\">" + players[i].playerName + "</a></td>" +
           "<td>" + players[i].totalDamage + "</td>" +
           "<td>" + players[i].averageDamage + "</td>" +
           "<td>" + players[i].totalRaidAttacks + "</td>" +
@@ -146,5 +159,25 @@ $(document).ready(function () {
     }
 
     event.preventDefault();
+  });
+
+  $("#player-modal").on('shown.bs.modal', function (event) {
+    $("#modal-text").fadeIn();
+  });
+
+  $("#player-modal").on('hidden.bs.modal', function () {
+    $("#modal-text").hide();
+  });
+
+  $(document).on('show.bs.modal', '#player-modal', function (event) {
+    $("#modal-text tr:gt(0)").remove();
+    var modalLink = $(event.relatedTarget);
+    modalPlayerCode = $(modalLink).attr("name");
+
+    $("#modal-text").append(
+      "<tr>" +
+        "<td>" + modalPlayerCode + "</td>" +
+        "<td></td><td></td><td></td><td></td><td></td><td></td><td></td>" +
+      "</tr>");
   });
 });
