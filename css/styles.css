@@ -31,3 +31,11 @@ tr:hover {
 #modal-text {
   display: none;
 }
+
+.modal-lg {
+  max-width: 80%;
+}
+
+.modal-footer {
+  text-align: center;
+}

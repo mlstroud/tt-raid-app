@@ -58,8 +58,6 @@ function Player(raidAttack) {
   this.totalDamage = 0;
   this.averageDamage = 0;
   this.titan = new Array();
-  //var tempTitan = new Titan(raidAttack);
-  //this.titan.push(tempTitan);
 };
 
 Player.prototype.updateDamage = function(raidAttack) {
@@ -248,7 +246,7 @@ $(document).ready(function () {
   });
 
   $(document).on('show.bs.modal', '#player-modal', function (event) {
-    $("#modal-text tr:gt(0)").remove();
+    $(".player-detail-panel").remove();
     var modalLink = $(event.relatedTarget);
     modalPlayerCode = $(modalLink).attr("name");
 
@@ -259,17 +257,62 @@ $(document).ready(function () {
       }
     }
 
-    console.log(player.titan.length);
-    $("#modal-text").append(
-      "<tr>" +
-        "<td>" + player.playerCode + "</td>" +
-        "<td></td>" +
-        "<td></td>" +
-        "<td></td>" +
-        "<td></td>" +
-        "<td></td>" +
-        "<td></td>" +
-        "<td></td>" +
-      "</tr>");
+    for (let i = 0; i < player.titan.length; i++) {
+      $("#modal-text").append(
+        "<div class=\"panel panel-default player-detail-panel\">" +
+          "<div class=\"panel-heading\">" +
+            "<h2 class=\"panel-title\">" + player.titan[i].titanName + " - Total Damage: " + player.titan[i].titanDamage + "</h2>" +
+          "</div>" +
+          "<div class=\"panel-body\">" +
+            "<table>" +
+              "<tr>" +
+                "<th></th>" + 
+                "<th>Head</th>" + 
+                "<th>Torso</th>" + 
+                "<th>Left Arm</th>" + 
+                "<th>Right Arm</th>" + 
+                "<th>Left Hand</th>" + 
+                "<th>Right Hand</th>" + 
+                "<th>Left Leg</th>" + 
+                "<th>Right Leg</th>" + 
+              "</tr>" +
+              "<tr>" +
+                "<th>Armor</th>" + 
+                "<td>" + player.titan[i].head.armor + "</td>" + 
+                "<td>" + player.titan[i].torso.armor + "</td>" + 
+                "<td>" + player.titan[i].leftArm.armor + "</td>" + 
+                "<td>" + player.titan[i].rightArm.armor + "</td>" + 
+                "<td>" + player.titan[i].leftHand.armor + "</td>" + 
+                "<td>" + player.titan[i].rightHand.armor + "</td>" + 
+                "<td>" + player.titan[i].leftLeg.armor + "</td>" + 
+                "<td>" + player.titan[i].rightLeg.armor + "</td>" + 
+              "</tr>" +
+              "<tr>" +
+                "<th>Body</th>" + 
+                "<td>" + player.titan[i].head.body + "</td>" + 
+                "<td>" + player.titan[i].torso.body + "</td>" + 
+                "<td>" + player.titan[i].leftArm.body + "</td>" + 
+                "<td>" + player.titan[i].rightArm.body + "</td>" + 
+                "<td>" + player.titan[i].leftHand.body + "</td>" + 
+                "<td>" + player.titan[i].rightHand.body + "</td>" + 
+                "<td>" + player.titan[i].leftLeg.body + "</td>" + 
+                "<td>" + player.titan[i].rightLeg.body + "</td>" + 
+              "</tr>" +
+              "<tr>" +
+                "<th>Skeleton</th>" + 
+                "<td>" + player.titan[i].head.skeleton + "</td>" + 
+                "<td>" + player.titan[i].torso.skeleton + "</td>" + 
+                "<td>" + player.titan[i].leftArm.skeleton + "</td>" + 
+                "<td>" + player.titan[i].rightArm.skeleton + "</td>" + 
+                "<td>" + player.titan[i].leftHand.skeleton + "</td>" + 
+                "<td>" + player.titan[i].rightHand.skeleton + "</td>" + 
+                "<td>" + player.titan[i].leftLeg.skeleton + "</td>" + 
+                "<td>" + player.titan[i].rightLeg.skeleton + "</td>" + 
+              "</tr>" +
+            "</table>" +
+          "</div>" +
+        "</div>"
+      );
+    }
   });
 });
