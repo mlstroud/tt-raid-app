@@ -11,14 +11,51 @@ function Player(raidAttack) {
   this.totalRaidAttacks = raidAttack.totalRaidAttacks;
   this.totalDamage = 0;
   this.averageDamage = 0;
-  this.head = [0, 0, 0];
-  this.leftArm = [0, 0, 0];
-  this.rightArm = [0, 0, 0];
-  this.leftHand = [0, 0, 0];
-  this.rightHand = [0, 0, 0];
-  this.Torso = [0, 0, 0];
-  this.leftLeg = [0, 0, 0];
-  this.RightLeg = [0, 0, 0];
+  this.titan = {
+    titanNumber : raidAttack.titanNumber,
+    titanName : raidAttack.titanName,
+    titanDamage : raidAttack.titanDamage,
+    head = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    leftArm = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    rightArm = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    leftHand = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    rightHand = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    torso = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    leftLeg = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    },
+    rightLeg = {
+      armor : 0,
+      body : 0,
+      skeleton : 0
+    }
+  };
 };
 
 Player.prototype.updateDamage = function(raidAttack) {
@@ -30,6 +67,38 @@ Player.prototype.updateDamage = function(raidAttack) {
     + raidAttack.skeletonLeftLeg + raidAttack.skeletonRightArm + raidAttack.skeletonRightHand + raidAttack.skeletonRightLeg + raidAttack.skeletonTorso;
 
   this.averageDamage = Math.round(this.totalDamage / this.totalRaidAttacks);
+
+  this.titan.head.armor = raidAttack.armorHead;
+  this.titan.head.body = raidAttack.bodyHead;
+  this.titan.head.skeleton = raidAttack.skeletonHead;
+
+  this.titan.leftArm.armor = raidAttack.armorLeftArm;
+  this.titan.leftArm.body = raidAttack.bodyLeftArm;
+  this.titan.leftArm.skeleton = raidAttack.skeletonLeftArm;
+
+  this.titan.rightArm.armor = raidAttack.armorRightArm;
+  this.titan.rightArm.body = raidAttack.bodyRightArm;
+  this.titan.rightArm.skeleton = raidAttack.skeletonRightArm;
+
+  this.titan.leftHand.armor = raidAttack.armorLeftHand;
+  this.titan.leftHand.body = raidAttack.bodyLeftHand;
+  this.titan.leftHand.skeleton = raidAttack.skeletonLeftHand;
+
+  this.titan.rightHand.armor = raidAttack.armorRightHand;
+  this.titan.rightHand.body = raidAttack.bodyRightHand;
+  this.titan.rightHand.skeleton = raidAttack.skeletonRightHand;
+
+  this.titan.torso.armor = raidAttack.armorTorso;
+  this.titan.torso.body = raidAttack.bodyTorso;
+  this.titan.torso.skeleton = raidAttack.skeletonTorso;
+
+  this.titan.leftLeg.armor = raidAttack.armorLeftLeg;
+  this.titan.leftLeg.body = raidAttack.bodyLeftLeg;
+  this.titan.leftLeg.skeleton = raidAttack.skeletonLeftLeg;
+
+  this.titan.rightLeg.armor = raidAttack.armorRightLeg;
+  this.titan.rightLeg.body = raidAttack.bodyRightLeg;
+  this.titan.rightLeg.skeleton = raidAttack.skeletonRightLeg;
 };
 
 function readRaidLog() {
